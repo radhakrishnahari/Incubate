@@ -1,1 +1,12 @@
-#!sh
+#!/bin/sh
+
+sudo apt-get update
+
+sudo ufw status
+sudo ufw allow 22/tcp
+sudo ufw enable
+sudo ufw allow 3306/tcp
+sudo ufw allow 3307/tcp
+sudo service ufw restart
+sudo ufw status
+
