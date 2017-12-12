@@ -10,3 +10,5 @@ sudo ufw allow 3307/tcp
 sudo service ufw restart
 sudo ufw status
 
+sudo apt-get install mariadb-server
+
