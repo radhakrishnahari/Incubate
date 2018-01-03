@@ -10,5 +10,5 @@ sudo ufw allow 5432/tcp
 sudo service ufw restart
 sudo ufw status
 
-sudo apt-get install mariadb-server
+sudo apt-get -y install postgresql postgresql-contrib phppgadmin
 
