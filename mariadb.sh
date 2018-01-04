@@ -31,3 +31,5 @@ sudo apt-get update
 #sudo service mdsd restart 
 #sudo apt-get update
  
+sudo apt-get --yes install mariadb-server
+sudo apt-get update
