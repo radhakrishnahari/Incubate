@@ -44,3 +44,6 @@ flush privileges;
 EOT
 
 sudo mysql < /tmp/temp.sql
+
+cat /etc/mysql/mariadb.conf.d/50-server.cnf | sed 's/bind-address/#bind-address/' > /tmp/50-server.cnf
+ 
