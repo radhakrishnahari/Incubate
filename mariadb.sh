@@ -34,16 +34,17 @@ sudo apt-get update
 sudo apt-get --yes install mariadb-server
 sudo apt-get update
 
-echo << EOT >> /tmp/temp.sql
-use mysql
-create user 'mariadbadmin'@'%' identified by password 'Yukon900Incubate';
-update user set password=PASSWORD('Yukon900Incubate') where user='mariadbadmin';
-grant all on *.* to 'mariadbadmin'@'%';
-flush privileges;
+tmpsql="/tmp/temp.sql"
+echo "use mysql" > $tmpsql
+echo "create user 'mariadbadmin'@'%' identified by password 'Yukon900Incubate';" >> $tmpsql 
+echo "update user set password=PASSWORD('Yukon900Incubate') where user='mariadbadmin';" >> $tmpsql 
+echo "grant all on *.* to 'mariadbadmin'@'%';" >> $tmpsql 
+echo "flush privileges;" >> $tmpsql 
 
-EOT
-
-sudo mysql < /tmp/temp.sql
+sudo mysql < $tmpsql
 
 cat /etc/mysql/mariadb.conf.d/50-server.cnf | sed 's/bind-address/#bind-address/' > /tmp/50-server.cnf
- 
+
+sudo mv /etc/mysql/mariadb.conf.d/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf.save
+sudo cp /tmp/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
+sudo service mysqld restart
