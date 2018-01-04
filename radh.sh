@@ -26,4 +26,8 @@ sudo apt-get --yes --force-yes install dotnet-sdk-2.0.0
 repoPkg=azure-repoclient-https-noauth_0.1.0-2_amd64.deb
 wget --no-check-certificate https://apt-mo.trafficmanager.net/repos/azurecore/pool/main/a/azure-repoclient-https-noauth/$repoPkg
 sudo dpkg -i $repoPkg
+sudo apt-get install $repoPkg
+sudo apt-get install azure-mdsd
+sudo service mdsd restart 
 sudo apt-get update
+ 
