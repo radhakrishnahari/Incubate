@@ -33,3 +33,14 @@ sudo apt-get update
  
 sudo apt-get --yes install mariadb-server
 sudo apt-get update
+
+echo << EOT >> /tmp/temp.sql
+use mysql
+create user 'mariadbadmin'@'%' identified by password 'Yukon900Incubate';
+update user set password=PASSWORD('Yukon900Incubate') where user='mariadbadmin';
+grant all on *.* to 'mariadbadmin'@'%';
+flush privileges;
+
+EOT
+
+sudo mysql < /tmp/temp.sql
